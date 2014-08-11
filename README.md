@@ -69,14 +69,14 @@ O quinto parâmetro é para eliminar a tabela, se existir.
 INSERT
 ------
 ```php
-$con->Begin()
+$con->Begin();
 $data = Array('id'=>1,'name' => 'First Record', 'col3' => 'test ');
 $con->Insert('tab_teste',$data);
 $data = Array('id'=>2,'name' => 'Second Record', 'col3' => 'test ');
 $con->Insert('tab_teste',$data);
 $data = Array('id'=>3,'name' => 'Third Record', 'col3' => 'test ');
 $con->Insert('tab_teste',$data);
-$con->Commit()
+$con->Commit();
 ```
 
 DELETE

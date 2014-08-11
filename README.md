@@ -154,6 +154,8 @@ GPL v2
 
 Author
 ------
-[Kaduamaral]:http://linkedin.com/in/kaduamaral
-[Devcia]:http://devcia.com
-[GitHub]:http://github.com/kaduamaral
+[Kaduamaral](http://linkedin.com/in/kaduamaral)
+
+[Devcia: http://devcia.com](http://devcia.com)
+
+[GitHub](http://github.com/kaduamaral)

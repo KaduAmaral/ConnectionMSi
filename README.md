@@ -16,6 +16,8 @@ Methods
   - Update
   - Delete
   - Select
+  - ExecuteSQL (generic query)
+  - Transaction (Begin, Rollback, Commit)
 
 
 Connection

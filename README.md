@@ -158,6 +158,6 @@ Author
 ------
 [Kaduamaral](http://linkedin.com/in/kaduamaral)
 
-[Devcia: http://devcia.com](http://devcia.com)
+[Devcia: http://devcia.com](http://devcia.com/connectionmsi-conexao-pratica-com-banco-de-dados/)
 
 [GitHub](http://github.com/kaduamaral)

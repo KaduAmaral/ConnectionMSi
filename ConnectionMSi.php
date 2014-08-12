@@ -2,6 +2,12 @@
 /**
 * ConnectionMSi - Classe de conexão mysqli
 * Manuseio de dados, preparação de querys e etc
+*
+* @author         kaduamaral - @profile http://linkedin.com/in/kaduamaral
+* @repository     https://github.com/KaduAmaral/ConnectionMSi.git
+* @date           2014-07-11
+* @site           http://devcia.com/
+*
 */
 class ConnectionMSi extends Mysqli
 {

@@ -154,10 +154,10 @@ GPL v2
 
 
 
-Author
+Project
 ------
-[Kaduamaral](http://linkedin.com/in/kaduamaral)
+[Author: Kaduamaral](http://linkedin.com/in/kaduamaral)
 
-[Devcia: http://devcia.com](http://devcia.com/connectionmsi-conexao-pratica-com-banco-de-dados/)
+[Devcia: ConnectionMSi Docs](http://devcia.com/connectionmsi-conexao-pratica-com-banco-de-dados/)
 
-[GitHub](http://github.com/kaduamaral)
+[GitHub: Project](http://github.com/KaduAmaral/ConnectionMSi/)

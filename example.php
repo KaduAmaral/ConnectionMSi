@@ -83,7 +83,8 @@ $con->DebugIn();
       'id' => Array(
          'type' => 'int',
          'size' => '4',
-         'comment' => 'first key'
+         'comment' => 'first key',
+         'auto' => true
       ),
       'name' => Array(
          'type' => 'varchar',
@@ -105,10 +106,16 @@ $con->DebugIn();
    echo '<label>Insert Statement</label>';
    echo '<pre>';
    echo $con->Insert('tab_teste',Array('id'=>1,'name' => 'First Record', 'col3' => 'test '));
-   echo "\n";
+   echo PHP_EOL;
    echo $con->Insert('tab_teste',Array('id'=>2,'name' => 'Second Record', 'col3' => 'test '));
-   echo "\n";
+   echo PHP_EOL;
    echo $con->Insert('tab_teste',Array('id'=>3,'name' => 'Third Record', 'col3' => 'test '));
+   echo PHP_EOL;
+   echo $con->Insert('tab_teste',Array('name' => 'Quarto', 'col3' => '4 '));
+   echo PHP_EOL;
+   echo $con->Insert('tab_teste',Array('name' => 'Quinto', 'col3' => '5 '));
+   echo PHP_EOL;
+   echo $con->Insert('tab_teste',Array('name' => 'Sexto', 'col3' => '6 '));
    echo '</pre>';
 
    echo '<label>Delete Statement</label>';
@@ -121,16 +128,23 @@ $con->DebugIn();
    echo $con->Update('tab_teste',Array('name' => 'Now this is the first record', 'col3' => 'First record '), Array('id'=>2));
    echo '</pre>';
 
+   $where = Array(
+      'id' => array('NOT' => array(1,'>>>',6,array(3,5))),
+      'OR',
+      'col3' => array('LIKE' => 'recor')
+   );
 
-
-
+   echo '<label>INSERT Statement</label>';
+   echo '<pre>';
+   echo $con->Select('tab_teste',$where);
+   echo '</pre>';
 
 
    $con->DebugOut();
 
 
    echo '<label>Select Statement</label>';
-   $res = $con->Select('tab_teste');
+   $res = $con->Select('tab_teste',$where);
    $tab = $res->fetch_all(MYSQLI_ASSOC);
    if (is_array($tab)){
       $_cols = Array();

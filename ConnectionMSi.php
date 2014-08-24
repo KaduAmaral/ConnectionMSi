@@ -140,6 +140,7 @@ class ConnectionMSi extends Mysqli
          if (isset($values['type'])) $_fields .= $values['type'];
          if (isset($values['size'])) $_fields .= '('.$values['size'].') ';
          if (isset($values['pk']) && $values['pk']) $_fields .= 'PRIMARY KEY ';
+         if (isset($values['auto']) && $values['auto']) $_fields .= 'AUTO_INCREMENT ';
          if (isset($values['null']) && $values['null']) $_fields .= 'NULL '; else $_fields .= 'NOT NULL ';
          if (isset($values['deafult'])) $_fields .= 'DEFAULT '.(is_string($values['deafult']) ? '\''.$values['deafult'].'\'' : $values['deafult']).' ';
          if (isset($values['comment'])) $_fields .= "COMMENT '{$values['comment']}' ";
@@ -188,16 +189,9 @@ class ConnectionMSi extends Mysqli
     **
     **/
    public function Begin(){
-      $this->begin_transaction();
+      parent::begin_transaction();
    }
 
-   public function Rollback(){
-      $this->rollback();
-   }
-
-   public function Commit(){
-      $this->commit();
-   }
 
    private function prepareInsertData($data)
    {
@@ -222,7 +216,7 @@ class ConnectionMSi extends Mysqli
          $where = ' NOT IN (';
       } else $where = ' IN (';
       if (in_array('>>>', $in)){
-         for ($i=$in[0]; $i < $in[2]; $i++){
+         for ($i=$in[0]; $i <= $in[2]; $i++){
             if (isset($in[3]) && in_array($i, $in[3])) continue;
             $where .= $i.', ';
          }
@@ -239,6 +233,10 @@ class ConnectionMSi extends Mysqli
 
       $_where = ' WHERE ';
       foreach ($where as $col => $value) {
+         if ($value === 'OR'){
+            $_where = substr($_where, 0, strlen($_where)-5).' OR ';
+            continue;
+         }
          $_where .= "`{$col}`";
          if (is_string($value)) $_where .= " = '{$value}'";
          if (is_numeric($value)) $_where .= " = {$value}";
@@ -249,6 +247,8 @@ class ConnectionMSi extends Mysqli
             } else if (array_key_exists('BETWEEN', $value)){
                if (count($value['BETWEEN']) !== 2) return $this->setError('Error: `where` clause BETWEEN data size is invalid!');
                $_where .= " BETWEEN {$value['BETWEEN'][0]} AND {$value['BETWEEN'][1]}";
+            } else if (array_key_exists('LIKE', $value)){
+               $_where .= " LIKE '%{$value['LIKE']}%'";
             } else { // IN
                $_where .= $this->prepareInWhere($value);
             }

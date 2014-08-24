@@ -127,6 +127,12 @@ $where = 'id = 1';
 $where = Array('id' => 1); 
 // Result: id = 1
 
+$where = Array('id' => 1,'OR','col3' => 'test'); 
+// Result: id = 1 OR col3 = 'test'
+
+$where - Array('col3' => array('LIKE' => 'recor'))
+// Result: col3 LIKE '%recor%'
+
 $where = Array('id' => Array(1,'>>>',10, Array(3,6,8))); 
 // Result: id IN (1,2,4,5,7,9,10)
 
@@ -138,6 +144,15 @@ $where = Array('id' => Array('NOT' => Array(1,2,3,12,45)));
 
 $where = Array('id' => Array('NOT' => Array(1,'>>>',10, Array(3,6,8)))); 
 // Result: id NOT IN (1,2,4,5,7,9,10)
+
+
+$where = Array(
+  'id' => array('NOT' => array(1,'>>>',6,array(3,5))),
+  'OR',
+  'col3' => array('LIKE' => 'recor')
+);
+// Result: id NOT IN (1, 2, 4, 6) OR col3 LIKE '%recor%'
+
 ```
 
 

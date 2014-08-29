@@ -185,11 +185,11 @@ class ConnectionMSi extends Mysqli
 
    /**
     **
-    **  Can you use too: $mysqli->autocommit(FALSE);
+    **  Can you use too: $mysqli->autocommit(FALSE); $mysqli->Rollback(); $mysqli->Commit();
     **
     **/
    public function Begin(){
-      parent::begin_transaction();
+      $this->begin_transaction();
    }
 
 
@@ -239,9 +239,9 @@ class ConnectionMSi extends Mysqli
          }
          $_where .= "`{$col}`";
          if (is_string($value)) $_where .= " = '{$value}'";
-         if (is_numeric($value)) $_where .= " = {$value}";
-         if (is_null($value)) $_where .= " IS NULL";
-         if (is_array($value)) {
+         elseif (is_numeric($value)) $_where .= " = {$value}";
+         elseif (is_null($value)) $_where .= " IS NULL";
+         elseif (is_array($value)) {
             if (array_key_exists('NOT', $value)){
                $_where .= $this->prepareInWhere($value);//substr($_where, -2);
             } else if (array_key_exists('BETWEEN', $value)){

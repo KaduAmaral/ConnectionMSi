@@ -179,8 +179,6 @@ class ConnectionMSi extends Mysqli
 
       return $this->ExecuteSQL($_sql);
 
-      echo $_sql;
-
    }
 
    /**

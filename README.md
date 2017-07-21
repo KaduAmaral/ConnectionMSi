@@ -173,6 +173,6 @@ Project
 ------
 [Author: Kaduamaral](http://linkedin.com/in/kaduamaral)
 
-[Devcia: ConnectionMSi Docs](http://devcia.com/connectionmsi-conexao-pratica-com-banco-de-dados/)
+[Devcia: ConnectionMSi Docs](http://blog.devcia.com/connectionmsi-conexao-pratica-com-banco-de-dados/)
 
 [GitHub: Project](http://github.com/KaduAmaral/ConnectionMSi/)
